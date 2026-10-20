@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus UI — 3D Component Playground</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Three.js for 3D Background Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Fullscreen 3D WebGL Geometric Background -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- ====================================================================
+       Component 1: Reusable Navbar
+       ==================================================================== -->
+  <header class="navbar-wrapper">
+    <nav class="nexus-navbar" id="nexus-nav">
+      <div class="nav-brand">
+        <div class="brand-cube">
+          <span>◆</span>
+        </div>
+        <span class="brand-text">Nexus<span class="brand-highlight">UI</span></span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#buttons" class="nav-link active">Buttons</a></li>
+        <li><a href="#cards" class="nav-link">Cards</a></li>
+        <li><a href="#inputs" class="nav-link">Inputs</a></li>
+        <li><a href="#modal-section" class="nav-link">Modals</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="btn-docs" class="btn btn-outline btn-sm">Documentation</button>
+        <button id="btn-open-modal-nav" class="btn btn-primary btn-sm">Open Modal</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Showcase Container -->
+  <main class="playground-container">
+    
+    <!-- Hero Introduction -->
+    <section class="hero-section">
+      <div class="badge-pill">
+        <span class="pulse-dot"></span>
+        <span>Task 4 · Personal Component Playground</span>
+      </div>
+      <h1 class="hero-title">
+        Reusable UI Design System <br>
+        <span class="gradient-text">Rendered in 3D Motion</span>
+      </h1>
+      <p class="hero-subtitle">
+        A cohesive design toolkit featuring 5 polished UI primitives with responsive layouts, 3D perspective interactions, and live interactive states.
+      </p>
+    </section>
+
+    <!-- Component Showcase Grid -->
+    <div class="showcase-grid">
+
+      <!-- ================================================================
+           Component 2: Reusable Buttons (Component 01)
+           ================================================================ -->
+      <section class="component-panel" id="buttons">
+        <div class="panel-header">
+          <span class="component-tag">Component 01</span>
+          <h2>Buttons</h2>
+          <p>Click any button below to highlight it with active glowing state.</p>
+        </div>
+
+        <div class="preview-box vertical-preview">
+          <!-- Button Group: None is highlighted initially -->
+          <div class="button-group" id="comp1-buttons">
+            <button id="btn-primary" class="btn btn-primary">Primary Glow</button>
+            <button id="btn-secondary" class="btn btn-secondary">Secondary Dark</button>
+            <button id="btn-outline" class="btn btn-outline">Outline Glass</button>
+            <button id="btn-danger" class="btn btn-danger">Danger Alert</button>
+            <button id="btn-icon" class="btn btn-icon" title="Settings Action">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+              <span>Settings</span>
+            </button>
+          </div>
+          
+          <!-- Live Interactive Feedback Bar -->
+          <div class="button-console">
+            <span class="console-label">Active Selection:</span>
+            <span id="btn-status" class="console-status">None (Click any button above)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Component 3: Reusable 3D Glass Card (Component 02)
+           ================================================================ -->
+      <section class="component-panel" id="cards">
+        <div class="panel-header">
+          <span class="component-tag">Component 02</span>
+          <h2>Cards</h2>
+          <p>Click "Explore Engine" to inspect live 3D soundscapes and audio telemetry.</p>
+        </div>
+
+        <div class="preview-box">
+          <article class="nexus-card" id="nexus-demo-card" data-tilt>
+            <div class="card-cover">
+              <span class="card-pill">Interactive 3D</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Spatial Audio Engine</h3>
+              <p class="card-text">
+                Real-time acoustic simulation built for hyper-immersive web applications with zero latency.
+              </p>
+              <div class="card-footer">
+                <span class="card-author">By Nexus Labs</span>
+                <button id="card-action-btn" class="btn btn-primary btn-sm">Explore Engine ➔</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Component 4: Reusable Form Inputs (Component 03)
+           ================================================================ -->
+      <section class="component-panel" id="inputs">
+        <div class="panel-header">
+          <span class="component-tag">Component 03</span>
+          <h2>Form Inputs</h2>
+          <p>Contextual text inputs with floating focus states and live validation.</p>
+        </div>
+
+        <div class="preview-box">
+          <div class="form-container">
+            <div class="input-field">
+              <label for="demo-email">Work Email</label>
+              <div class="input-wrapper">
+                <input type="email" id="demo-email" placeholder="alex@nexusui.dev" autocomplete="off" />
+                <span id="input-status-icon" class="status-icon">✓</span>
+              </div>
+              <span id="input-hint" class="input-hint">Type your email to see live validation</span>
+            </div>
+
+            <div class="input-field">
+              <label for="demo-select">Department</label>
+              <div class="input-wrapper">
+                <select id="demo-select">
+                  <option value="engineering">Core Engineering</option>
+                  <option value="design">UI/UX Design Systems</option>
+                  <option value="product">Product Architecture</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================
+           Component 5: Reusable Modal Dialog (Component 04 & 05)
+           ================================================================ -->
+      <section class="component-panel" id="modal-section">
+        <div class="panel-header">
+          <span class="component-tag">Component 04 & 05</span>
+          <h2>Modal Dialog & Navbar</h2>
+          <p>Top navigation system plus an animated 3D modal dialog with backdrop blur.</p>
+        </div>
+
+        <div class="preview-box center-preview">
+          <div class="modal-trigger-box">
+            <button id="btn-launch-modal" class="btn btn-primary btn-lg">
+              <span>🚀 Launch 3D Modal</span>
+            </button>
+            <p class="trigger-note">Click to preview the 3D pop-in modal with keyboard & overlay listeners.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ====================================================================
+       Card Detail Exploration Modal (Opened when clicking Component 2 Explore)
+       ==================================================================== -->
+  <div id="card-explore-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="nexus-modal explore-dialog">
+      <div class="modal-header">
+        <div class="modal-badge">🎧 Component 02 Telemetry</div>
+        <button id="btn-close-explore-x" class="modal-close-btn" aria-label="Close">✕</button>
+      </div>
+
+      <div class="modal-content">
+        <h3>Spatial Audio Engine Live</h3>
+        <p>
+          You are now exploring the real-time 3D audio telemetry. Acoustic rays are mapped across 64 spatial vectors.
+        </p>
+
+        <!-- Animated Soundwave Equalizer -->
+        <div class="soundwave-box">
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+          <div class="soundwave-bar"></div>
+        </div>
+
+        <!-- Engine Specs Grid -->
+        <div class="specs-grid">
+          <div class="spec-card">
+            <span class="spec-label">Latency</span>
+            <span class="spec-value">0.8 ms</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-label">Sample Rate</span>
+            <span class="spec-value">96.0 kHz</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-label">HRTF Filtering</span>
+            <span class="spec-value">Active ✓</span>
+          </div>
+          <div class="spec-card">
+            <span class="spec-label">Buffer Size</span>
+            <span class="spec-value">64 frames</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="btn-close-explore" class="btn btn-outline">Close Preview</button>
+        <button id="btn-toggle-audio" class="btn btn-primary">Toggle Soundscape</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Standard Demo Modal (Component 05) -->
+  <div id="modal-overlay" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="nexus-modal">
+      <div class="modal-header">
+        <div class="modal-badge">✨ Component 05</div>
+        <button id="btn-close-modal-x" class="modal-close-btn" aria-label="Close Modal">✕</button>
+      </div>
+
+      <div class="modal-content">
+        <h3>Nexus Modal Dialog</h3>
+        <p>
+          This modal features true 3D perspective entrance scaling, backdrop blur filtration, 
+          and full keyboard accessibility (press <kbd>ESC</kbd> to close).
+        </p>
+      </div>
+
+      <div class="modal-actions">
+        <button id="btn-dismiss-modal" class="btn btn-outline">Dismiss</button>
+        <button id="btn-confirm-modal" class="btn btn-primary">Confirm Action</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Toast Notification -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
