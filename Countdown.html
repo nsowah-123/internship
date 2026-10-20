@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>University Campus 3D Launch — Countdown</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Three.js for 3D WebGL Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Fullscreen 3D WebGL Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Interactive 3D Foreground Content -->
+  <main class="container">
+    <div class="badge">🎓 3D Interactive Campus Experience</div>
+    
+    <h1>The Next Chapter in <br><span class="gradient-text">Campus Life</span></h1>
+    <p class="subtitle">A full 3D interactive university experience. Live course tracking, 3D campus navigation, and student collaboration launching soon.</p>
+
+    <!-- 3D Tilt Countdown Timer -->
+    <div class="countdown" id="countdown-grid">
+      <div class="card" data-tilt>
+        <span id="days" class="number">00</span>
+        <span class="label">Days</span>
+      </div>
+      <div class="card" data-tilt>
+        <span id="hours" class="number">00</span>
+        <span class="label">Hours</span>
+      </div>
+      <div class="card" data-tilt>
+        <span id="minutes" class="number">00</span>
+        <span class="label">Minutes</span>
+      </div>
+      <div class="card" data-tilt>
+        <span id="seconds" class="number">00</span>
+        <span class="label">Seconds</span>
+      </div>
+    </div>
+
+    <!-- Notify Me Form -->
+    <form id="notify-form" class="notify-form" novalidate>
+      <input type="email" id="email" placeholder="Enter your student or personal email..." required />
+      <button type="submit" id="submit-btn">Notify Me</button>
+    </form>
+    <p id="feedback" class="feedback"></p>
+
+    <div class="hint-pill">
+      <span>🖱️ Move cursor or touch to pan 3D camera</span>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
